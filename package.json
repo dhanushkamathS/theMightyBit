@@ -1,0 +1,28 @@
+{
+  "name": "health_care_app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app.js"
+  },
+  "keywords": [],
+  "author": "theMightyBit",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.7.7",
+    "nodemon": "^1.19.4",
+    "npm": "^6.13.0",
+    "uuid": "^3.3.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dhanushkamathS/theMightyBit.git"
+  },
+  "bugs": {
+    "url": "https://github.com/dhanushkamathS/theMightyBit/issues"
+  },
+  "homepage": "https://github.com/dhanushkamathS/theMightyBit#readme"
+}
