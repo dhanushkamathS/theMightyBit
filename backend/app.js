@@ -18,7 +18,6 @@ app.get('/creators',(req,res) => {
     res.send(creators)
 })
 
-const PORT = parseInt(process.env.PORT);
-app.listen(PORT,() => {
-    console.log(`App running at ${PORT} ....`)
+app.listen(process.env.PORT,() => {
+    console.log(`App running at ${process.env.PORT} ....`)
 })
