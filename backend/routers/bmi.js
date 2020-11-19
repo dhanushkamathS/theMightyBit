@@ -1,6 +1,6 @@
 const express = require("express");
 var bmi = express.Router();
-const {postBmi} = require("../controller/bmi")
+const {postBMI} = require("../controller/bmi")
 
-bmi.post('/BMI',postBmi)
-module.exports = bmi
+bmi.post('/BMI',postBMI);
+module.exports = bmi;

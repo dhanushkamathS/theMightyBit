@@ -4,8 +4,7 @@ const bcrypt = require('bcrypt');
 const saltRounds = 10;
 var jwt = require("jsonwebtoken");
 const secret = process.env.SECRET;
-db = new Datastore({ filename: '../models/datafile', autoload: true });
-
+db = new Datastore({ filename: './models/datafile', autoload: true });
 
 //checks if the user aready exists before adding him to the DB
 exports.isSignedUp = (req,res,next)=>{
