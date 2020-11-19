@@ -4,7 +4,8 @@ var Datastore = require('nedb')
 var jwt = require("jsonwebtoken");
 const cookieParser = require("cookie-parser");
 const userAuth = require("./routers/userAuth");
-const bmi = require("./routers/bmi")
+const bmi = require("./routers/bmi");
+const medicine = require("./routers/medicine");
 
 
 const app = express();
@@ -17,7 +18,8 @@ db = new Datastore({ filename: 'models/datafile', autoload: true });
 
 
 app.use("/",userAuth);
-app.use("/")
+app.use("/",bmi)
+app.use("/",medicine)
 
 
 //server listening on some port 
