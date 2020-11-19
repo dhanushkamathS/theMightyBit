@@ -27,14 +27,14 @@ exports.deleteMedicine = (req,res) => {
 }
 
 exports.updateMedicine = (req,res) => {
-    // medicinename = req.body.medicine.medicinename
-    // username = req.body.username
-    // medicine = req.body.medicine
-    // db.update({username : `${username}`},{$set : {medicines : `${medicine}`}},{},(err)=>{
-    //     if(err){
-    //         return res.status(400).json({
-    //             error : `error ${err} occured`
-    //         })
-    //     }
-    // })
+    medicinename = req.body.medicine.medicinename
+    username = req.body.username
+    medicine = req.body.medicine
+    db.update({username : `${username}`},{$set : {medicines : `${medicine}`}},{},(err)=>{
+        if(err){
+            return res.status(400).json({
+                error : `error ${err} occured`
+            })
+        }
+    })
 }
