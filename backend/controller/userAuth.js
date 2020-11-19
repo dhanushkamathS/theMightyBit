@@ -2,7 +2,7 @@ const User = require("../models/user");
 var jwt = require("jsonwebtoken");
 
 
-
+// sign in 
 exports.signup = (req, res) => {
   const user = new User(req.body);
   user.save((err, user) => {
@@ -13,5 +13,36 @@ exports.signup = (req, res) => {
       });
     }
     res.json({user});
+  });
+};
+
+
+
+// login
+
+exports.login = (req, res) => {
+ 
+  const username = req.body.username;
+  const password = req.body.password;
+
+
+  User.findOne({ username }, (err, user) => {
+    if (err || !user) {
+      return res.status(400).json({
+        error: "USER email does not exists"
+      });
+    }
+
+    if (!user.autheticate(password)) {
+      return res.status(401).json({
+        error: "Email and password do not match"
+      });
+    }
+
+    //sending token and stuff
+    
+    
+
+    return res.json({userId : user._id});
   });
 };

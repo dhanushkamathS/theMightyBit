@@ -15,6 +15,12 @@ var medicineSchema = new Schema({
 })
 
 var userSchema = new Schema({
+    username : {
+        type: String,
+        required : true,
+        trim : true,
+        unique: true
+    },
     name : {
         type: String,
         required : true,
@@ -22,8 +28,7 @@ var userSchema = new Schema({
     },
     salt : String,
     encryp_password : {
-        type : String ,
-        required : true
+        type : String 
     },
     weight : Number,
     age : Number,
@@ -36,7 +41,7 @@ userSchema
   .set(function(password) {
     this._password = password;
     this.salt = uuidv4();
-    this.encry_password = this.securePassword(password);
+    this.encryp_password = this.securePassword(password);
   })
   .get(function() {
     return this._password;
@@ -44,7 +49,7 @@ userSchema
 
 userSchema.methods = {
   autheticate: function(plainpassword) {
-    return this.securePassword(plainpassword) === this.encry_password;
+    return this.securePassword(plainpassword) === this.encryp_password;
   },
 
   securePassword: function(plainpassword) {

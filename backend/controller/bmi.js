@@ -1,38 +1,20 @@
-
-
+const User = require("../models/user");
 
 
 exports.postBMI = (req,res) => {
-    var username = req.body.username;
-    //console.log(username);
-    res.send("found");
-    var userId ;
-    db.find({ username: `${username}` }, function (err, docs) {
-        if (err){
-            res.status(400).json({err : `error occured ${err}`});
+    
+    const userId  = req.body.userId;
+    const age = req.body.age;
+    const weight = req.body.weight;
+    const height = req.body.height;
+    User.findOneAndUpdate({ _id: userId },{age:age, weight:weight ,height:height } ,(err, user) => {
+        if (err || !user) {
+            console.log(err);
+          return res.status(400).json({
+            error: "USER email does not exists"
+          });
         }
-       userId= docs[0]._id ;
-
-       db.update({_id : `${userId}`},{$set : { age : `${req.body.age}`, weight : `${req.body.weight}`,height : `${req.body.height}`}},(err,updatedDocs) => {
-        if (err){
-            res.status(400).json({
-                err : `error occured ${err}`
-            })
-        }
-    });
-
-
-       
+    
+        return res.send("user has been updated");
       });
-    
-    /*
-    db.update({username : `${username}`},{$set : { age : `${req.body.age}`, weight : `${req.body.weight}`,height : `${req.body.height}`}},(err,updatedDocs) => {
-        if (err){
-            res.status(400).json({
-                err : `error occured ${err}`
-            })
-        }
-    });
-    */
-    
 };
