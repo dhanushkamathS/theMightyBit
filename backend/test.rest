@@ -2,9 +2,12 @@ POST http://localhost:8000/signup
 Content-Type: application/json
 
 {
-    "name":"dhanush",
-    "username":"1234dhanush",
-    "password":"12345"
+    "name":"dhanush123",
+    "username":"1234dhanushadfsjk",
+    "password":"12345",
+    "medicines" : [{
+      "_id": "5fb6a990f1afc07481f8e29b"
+    }]
 }
 
 ###
@@ -28,4 +31,12 @@ Content-Type: application/json
 {
     "username":"1234dhanush",
     "password":"12345"
+}
+
+###
+POST http://localhost:8000/addMedicine
+Content-Type: application/json
+
+{
+    "medicine_name" : "abcd"
 }

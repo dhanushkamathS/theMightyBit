@@ -1,4 +1,5 @@
 const User = require("../models/user");
+const Medicine = require("../models/medicine");
 var jwt = require("jsonwebtoken");
 
 
@@ -46,3 +47,17 @@ exports.login = (req, res) => {
     return res.json({userId : user._id});
   });
 };
+
+
+exports.addMedicine = (req,res) => {
+    const medicine = new Medicine(req.body)
+    medicine.save((err,medicine) => {
+      if(err){
+        res.status(400).json({
+          err : "Error Occured durin Medicene"
+        })
+      }
+      console.log(medicine)
+      res.json({medicine});
+    })
+}
