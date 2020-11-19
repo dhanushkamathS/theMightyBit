@@ -1,5 +1,5 @@
-var Datastore = require("nedb")
-db = new Datastore({ filename: '../models/datafile', autoload: true });
+
+
 
 
 exports.postBMI = (req,res) => {
