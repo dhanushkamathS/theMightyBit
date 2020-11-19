@@ -1,11 +1,14 @@
 const User = require("../models/user");
 var jwt = require("jsonwebtoken");
+const { use } = require("../routers/userAuth");
 
 
 // sign in 
 exports.signup = (req, res) => {
   const user = new User(req.body);
+  console.log(user);
   user.save((err, user) => {
+    console.log(user);
     if (err) {
       console.log(err);
       return res.status(400).json({
@@ -43,6 +46,6 @@ exports.login = (req, res) => {
     
     
 
-    return res.json({userId : user._id});
+    return res.json(user);
   });
 };

@@ -2,17 +2,10 @@ const mongoose = require("mongoose");
 const uuidv4 = require("uuid/v4");
 const crypto = require("crypto")
 const Schema = mongoose.Schema;
+const { ObjectId } = mongoose.Schema;
 
 
-var medicineSchema = new Schema({
-    medicine_name : {
-        type: String,
-        required : true,
-        trim : true
-    },
-    pills_no : Number,
-    times : [Date]
-})
+
 
 var userSchema = new Schema({
     username : {
@@ -33,7 +26,7 @@ var userSchema = new Schema({
     weight : Number,
     age : Number,
     height : Number,
-    medicines : [medicineSchema]
+    medicines : { type:ObjectId, ref: 'Medicine' }
 });
 
 userSchema
