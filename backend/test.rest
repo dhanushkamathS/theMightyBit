@@ -1,0 +1,31 @@
+POST http://localhost:8000/signup
+Content-Type: application/json
+
+{
+    "name":"dhanush",
+    "username":"1234dhanush",
+    "password":"12345"
+}
+
+###
+POST http://localhost:8000/BMI
+Content-Type: application/json
+
+
+{
+  "userId": "5fb67e3ada91d158a3c6785c",
+  "age":31,
+  "weight":31,
+  "height":31
+}
+
+
+
+###
+POST http://localhost:8000/login
+Content-Type: application/json
+
+{
+    "username":"1234dhanush",
+    "password":"12345"
+}
