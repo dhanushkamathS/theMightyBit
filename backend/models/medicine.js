@@ -4,10 +4,11 @@ const Schema = mongoose.Schema;
 var medicineSchema = new Schema({
     medicine_name : {
         type: String,
-        trim : true
+        required : true,
+        trim : true,
     },
-    pills_no : Number,
-    times : [Date]
+    no_pills : Number,
+    times : [String]
 })
 
 module.exports = mongoose.model("Medicine",medicineSchema);

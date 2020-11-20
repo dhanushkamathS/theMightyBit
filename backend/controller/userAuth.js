@@ -1,6 +1,6 @@
 const User = require("../models/user");
 var jwt = require("jsonwebtoken");
-const { use } = require("../routers/userAuth");
+
 
 
 // sign in 
@@ -43,9 +43,24 @@ exports.login = (req, res) => {
     }
 
     //sending token and stuff
-    
-    
-
     return res.json(user);
   });
+};
+
+
+
+// get all user information
+exports.allUserInfo = (req,res) => {
+    const userId  = req.body.userId;
+
+    User.findById(userId)
+    .populate("medicines")
+    .exec((err, user) => {
+      if (err) {
+        return res.status(400).json({
+          error: "NO order found in DB"
+        });
+      }
+      res.json(user);
+    });
 };

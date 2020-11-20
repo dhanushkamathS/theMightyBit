@@ -1,12 +1,11 @@
 require("dotenv").config();
 const mongoose = require("mongoose");
 const express = require("express");
-var Datastore = require('nedb')
 var jwt = require("jsonwebtoken");
 const cookieParser = require("cookie-parser");
 const userAuth = require("./routers/userAuth");
 const bmi = require("./routers/bmi");
-const medicine = require("./routers/medicine");
+const medRoutes = require("./routers/medicine");
 
 
 
@@ -31,6 +30,11 @@ app.use(express.json());
 
 app.use("/",userAuth);
 app.use("/",bmi);
+app.use("/",medRoutes);
+
+app.get("/testing",(req,res)=>{
+    res.send("working");
+});
 
 
 

@@ -2,10 +2,6 @@ const mongoose = require("mongoose");
 const uuidv4 = require("uuid/v4");
 const crypto = require("crypto")
 const Schema = mongoose.Schema;
-const { ObjectId } = mongoose.Schema;
-
-
-
 
 var userSchema = new Schema({
     username : {
@@ -26,7 +22,10 @@ var userSchema = new Schema({
     weight : Number,
     age : Number,
     height : Number,
-    medicines : { type:ObjectId, ref: 'Medicine' }
+    medicines : [{
+      type : mongoose.Types.ObjectId,
+      ref : "Medicine"
+    }]
 });
 
 userSchema

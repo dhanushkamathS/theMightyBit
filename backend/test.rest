@@ -2,6 +2,7 @@ POST http://localhost:8000/signup
 Content-Type: application/json
 
 {
+<<<<<<< HEAD
     "name":"dhanush",
     "username":"123456dhanush",
     "password":"12345",
@@ -19,6 +20,14 @@ Content-Type: application/json
 {
     "username":"1234dhanush",
     "password":"12345"
+=======
+    "name":"dhanush123",
+    "username":"1234dhanushadfsjk",
+    "password":"12345",
+    "medicines" : [{
+      "_id": "5fb6a990f1afc07481f8e29b"
+    }]
+>>>>>>> 344ab3196878bf63e745451ceb79040723bcd256
 }
 
 ###
@@ -31,4 +40,26 @@ Content-Type: application/json
   "age":31,
   "weight":31,
   "height":31
+<<<<<<< HEAD
+=======
+}
+
+
+
+###
+POST http://localhost:8000/login
+Content-Type: application/json
+
+{
+    "username":"1234dhanush",
+    "password":"12345"
+}
+
+###
+POST http://localhost:8000/addMedicine
+Content-Type: application/json
+
+{
+    "medicine_name" : "abcd"
+>>>>>>> 344ab3196878bf63e745451ceb79040723bcd256
 }
