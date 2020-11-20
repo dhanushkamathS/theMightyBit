@@ -6,9 +6,7 @@ var jwt = require("jsonwebtoken");
 // sign in 
 exports.signup = (req, res) => {
   const user = new User(req.body);
-  console.log(user);
   user.save((err, user) => {
-    console.log(user);
     if (err) {
       console.log(err);
       return res.status(400).json({
