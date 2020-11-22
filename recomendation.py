@@ -7,6 +7,8 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 import os
+import sys
+import json
 
 df = pd.read_csv('training.csv')
 Df = pd.read_csv('training.csv', index_col='prognosis')
@@ -54,6 +56,11 @@ l2 = []
 for i in range(0, len(l1)):
     l2.append(0)
 
+def write_json(filename, data):
+    file = filename + ".json"
+    with open(file, 'w') as fp:
+        json.dump(data, fp)
+
 def tree_model(psymptoms):
     clf3 = tree.DecisionTreeClassifier()
     clf1 = RandomForestClassifier()
@@ -86,7 +93,15 @@ def tree_model(psymptoms):
                 "knn" : knn_acc}
     return tree_, random, naives, knn, accuracy
 
-tree_, random, naives, knn, accuracy = tree_model(['runny_nose','watering_from_eyes', 'muscle_pain','mild_fever'])
+
+tree_, random, naives, knn, accuracy = tree_model(sys.argv[1:])
+filename = 'test'
+data = {}
+data['tree'] = tree_
+data['random'] = random
+data['naives'] = naives
+data['knn'] = knn
+write_json(filename, data)
 print(tree_)
 print(random)
 print(naives)
