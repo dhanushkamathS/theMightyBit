@@ -15,6 +15,6 @@ exports.postBMI = (req,res) => {
           });
         }
     
-        return res.send("user has been updated");
+        return res.json({status : "user has been updated"});
       });
 };
