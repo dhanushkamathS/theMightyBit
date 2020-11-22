@@ -2,21 +2,22 @@ const { spawn } = require('child_process');
 
 exports.getDisease = async (req,res)=>{
     var validatedInput = inputValidation(req.body.symp1,req.body.symp2,req.body.symp3,req.body.symp4,req.body.symp5);
-    console.log(typeof(validatedInput));
+
     try {
         const output = await run(validatedInput);
-        console.log(output)
+        res.json(output);
       } catch (e) {
         console.error('Error during script execution ', e.stack);
+        res.json({status :"something caused an error"});
       }
 
-    res.send("working");
+    
 }
 
 
 function run(arg1) {
     return new Promise((resolve, reject) => {
-      const process = spawn('python', ['../pythonfile/script.py', arg1]);
+      const process = spawn('python', ['../pythonfile/recomendation.py', arg1]);
       const out = []
       process.stdout.on(
         'data',
