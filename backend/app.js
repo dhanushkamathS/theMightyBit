@@ -1,17 +1,22 @@
 require("dotenv").config();
 const mongoose = require("mongoose");
 const express = require("express");
-var Datastore = require('nedb')
 var jwt = require("jsonwebtoken");
 const cookieParser = require("cookie-parser");
 const userAuth = require("./routers/userAuth");
-const bmi = require("./routers/bmi")
+const bmi = require("./routers/bmi");
+const medRoutes = require("./routers/medicine");
+const mlRoute  = require("./routers/mlRoute");
+
+
 
 mongoose.connect(process.env.DATABASE,
     {
         useNewUrlParser : true,
         useUnifiedTopology: true,
-        useCreateIndex: true
+        useCreateIndex: true,
+        autoIndex: true,
+        useFindAndModify: false
     }
 ).then(() => {
     console.log("DB CONNECTED");
@@ -22,12 +27,16 @@ const app = express();
 app.use(cookieParser());
 app.use(express.json());
 
-//gaining access to the DB
-db = new Datastore({ filename: 'models/datafile', autoload: true });
-
-
 app.use("/",userAuth);
-app.use("/")
+app.use("/",bmi);
+app.use("/",medRoutes);
+app.use("/",mlRoute);
+
+app.get("/testing",(req,res)=>{
+    res.send("working");
+});
+
+
 
 
 //server listening on some port 

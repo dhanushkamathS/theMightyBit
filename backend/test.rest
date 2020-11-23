@@ -1,0 +1,66 @@
+POST http://localhost:8000/signup
+Content-Type: application/json
+
+{
+    "name":"sraditya",
+    "username":"aditya",
+    "password":"12345"
+}
+
+###
+POST http://localhost:8000/login
+Content-Type: application/json
+
+{
+    "username":"1234dhanush",
+    "password":"12345"
+    "name":"dhanush123",
+    "username":"1234dhanushadfsjk",
+    "password":"12345",
+    "medicines" : [{
+      "_id": "5fb6a990f1afc07481f8e29b"
+    }]
+}
+
+###
+POST http://localhost:8000/BMI
+Content-Type: application/json
+
+
+{
+  "userId": "5fba839a64c4275f47058cf5",
+  "age":18,
+  "weight":99,
+  "height":194
+}
+
+###
+POST http://localhost:8000/updateMedicine
+Content-Type: application/json
+
+{
+    "userId": "5fba839a64c4275f47058cf5",
+    "medicine_name" : "dolo650",
+    "no_pills":1,
+    "times":["09:00","21:00"]
+}
+
+###
+GET http://localhost:8000/getdisease
+Content-Type: application/json
+
+{
+   "symp1":"headache",
+   "symp2":"mild fever",
+   "symp3":"runnung nose",
+   "symp4":"cough",
+   "symp5":"loss of apetitite"
+}
+
+###
+POST  http://localhost:8000/getallinfo
+Content-Type: application/json
+
+{
+   "userId": "5fba839a64c4275f47058cf5"
+}
